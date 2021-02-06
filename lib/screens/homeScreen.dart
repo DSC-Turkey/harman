@@ -6,6 +6,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //PageView Sayfaları
+  List<Widget> pages = [
+    AvailableLessons(),
+    Container(
+      color: Colors.cyan,
+    ),
+    Container(
+      color: Colors.deepPurple,
+    ),
+  ];
+  //Başlangıç sayfası
+  int pageNum = 0;
+  PageController pageController = PageController(
+    initialPage: 0,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +29,41 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Colors.grey,
       ),
-      body: AvailableLessons(),
+      body: PageView(
+        controller: pageController,
+        //BottomNavigationBar bağlantısı
+        onPageChanged: (_pageNum){
+          setState(() {
+            pageNum = _pageNum;
+          });
+        },
+        children: pages,
+      ),
+        bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Sayfa1',
+        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Sayfa2',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'Sayfa3',
+          ),
+        ],
+        currentIndex: pageNum,
+        selectedItemColor: Colors.black,
+        onTap:(index) {
+          setState(() {
+            pageNum = index;
+            //PageView bağlantısı
+            pageController.animateToPage(pageNum, duration: Duration(milliseconds: 500), curve: Curves.ease);
+          });
+        },
+      ),
     );
   }
 }
@@ -61,5 +110,8 @@ class _AvailableLessonsState extends State<AvailableLessons> {
         );
       },);
   }
+
+}
+class Decoration{
 
 }
