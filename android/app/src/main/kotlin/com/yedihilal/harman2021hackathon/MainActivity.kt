@@ -1,4 +1,4 @@
-package com.yedihilal.harman2021hackathon
+package com.yedihilal.harman
 
 import io.flutter.embedding.android.FlutterActivity
 
