@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/screens/userManagement/loginScreen.dart';
+import 'package:harman2021hackathon/service/auth.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   @override
@@ -58,8 +60,10 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
             key: Key('resetButtonKey'),
             color: Colors.white,
-            onPressed: () {
-
+            onPressed: () async {
+              await AuthService.resetPassword(emailController.text);
+              // ignore: unawaited_futures
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
             },
             child: Text('Kurtarma kodu gönder', style: TextStyle(color: Colors.black)),
           ),
@@ -67,7 +71,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
             color: Color.fromRGBO(38, 50, 56, 1),
             onPressed: () {
-
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
             },
             child: Text('giriş yap', style: TextStyle(color: Colors.white)),
           ),

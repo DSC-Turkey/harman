@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/screens/mainScreens/homeScreen.dart';
+import 'package:harman2021hackathon/screens/userManagement/signUpScreen.dart';
+import 'package:harman2021hackathon/service/auth.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -99,8 +102,10 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                 key: Key('submitButtonKey'),
                 color: Colors.white,
-                onPressed: () {
-
+                onPressed: () async {
+                  await AuthService.signInWithEmail(emailController.text, passwordController.text);
+                  // ignore: unawaited_futures
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
                 },
                 child: Text('Submit'),
               ),
@@ -111,8 +116,8 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                 color: Color.fromRGBO(38, 50, 56, 1),
                 child: Text('Sign up', style: TextStyle(color: Colors.white)),
-                onPressed: () {
-
+                onPressed: ()  {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpPage()));
                 },
               ),
             ),

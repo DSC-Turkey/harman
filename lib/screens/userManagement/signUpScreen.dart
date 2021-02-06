@@ -1,6 +1,6 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/service/auth.dart';
+import 'loginScreen.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -39,7 +39,7 @@ class _SignUpPageState extends State<SignUpPage> {
               obscureText: true,
               controller: passwordController,
               decoration:InputDecoration(
-                  hintText: 'Kulllanıcı adı',
+                  hintText: 'Kullanıcı adı',
                   hintStyle: TextStyle(color: Colors.white54),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
@@ -115,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
               RaisedButton(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                 onPressed: () {
-                  print('a');
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                 },
                 color: Colors.white,
                 child: Text('Hesabım var', style: TextStyle(color: Colors.black)),
@@ -125,8 +125,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                 key: Key('submitButtonKey'),
                 color: Colors.white,
-                onPressed: () {
-                 print('a');
+                onPressed: () async {
+                 await AuthService.signUpWithEmail(emailController.text, passwordController.text);
+                 // ignore: unawaited_futures
+                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
                 },
                 child: Text('kaydol', style: TextStyle(color: Colors.black)),
               ),
