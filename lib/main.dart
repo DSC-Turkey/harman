@@ -1,10 +1,9 @@
-
-
 import 'package:flutter/material.dart';
 
-import 'screens/homeScreen.dart';
-import 'screens/myFavoriteInstructorsScreen.dart';
-import 'screens/myLessonsScreen.dart';
+import 'screens/mainScreens/homeScreen.dart';
+import 'screens/mainScreens/myFavoriteInstructorsScreen.dart';
+import 'screens/mainScreens/myLessonsScreen.dart';
+import 'screens/userManagement/testScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,8 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/navigation' : (context) => NavigationPage(),
-        '/home' : (context) => HomePage(),
+        '/navigation': (context) => NavigationPage(),
+        '/home': (context) => HomePage(),
       },
       home: NavigationPage(),
     );
@@ -46,8 +45,21 @@ class _NavigationPageState extends State<NavigationPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        leading: Icon(Icons.ac_unit), // Todo: sol menu açıcı
+        actions: [
+          Row(
+            children: [
+              Icon(Icons.ac_unit),
+              Icon(Icons.ac_unit),
+              RaisedButton(
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen()));
+                  },
+                  child: Icon(Icons.ac_unit)),
+            ],
+          )
+        ],
         title: Text('Ders Uygulaması'),
-        centerTitle: true,
         backgroundColor: Color.fromRGBO(38, 50, 56, 1),
       ),
       body: PageView(
