@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/homeScreen.dart';
+import 'screens/homeScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +10,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       routes: {
         '/navigation' : (context) => NavigationPage(),
@@ -29,7 +29,7 @@ class _NavigationPageState extends State<NavigationPage> {
   ///NavigationBar için sayfalar
   List<Widget> pages = [
     HomePage(),
-    HomePage(),//Todo: MyLessonsPage()
+    MyLessonsPage(),//Todo: MyLessonsPage()
     HomePage(),//Todo: FovuriteInstructersPage()
   ];
 

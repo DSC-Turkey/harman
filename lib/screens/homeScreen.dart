@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -156,11 +157,97 @@ class _TrendsListState extends State<TrendsList> {
   }
 }
 
-Widget LessonCard(){
+class MyLessonsPage extends StatefulWidget{
+  @override
+  _MyLessonsPageState createState() => _MyLessonsPageState();
+}
+
+class _MyLessonsPageState extends State<MyLessonsPage> {
+  List lessons = [
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions'],
+    ['title', 'teacher', 'maxStudentValue', 'descriptions']
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: lessons.length,
+      itemBuilder: (context, index) {
+       return Padding(
+         padding: EdgeInsets.all(10),
+         child: Row(
+         children: [
+           LessonCard(180),
+           SizedBox(
+             child: Padding(
+               padding: EdgeInsets.all(10),
+               child:  Column(
+                 children: [
+                   Text(lessons[index][0],style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+                   Padding(padding: EdgeInsets.only(bottom: 20), child: Text(lessons[index][1],style: TextStyle(color: Colors.grey),),),
+                   Text(lessons[index][2],style: TextStyle(color: Colors.white),),
+                   Text(lessons[index][3],style: TextStyle(color: Colors.white),)
+                 ],
+               ),
+             ),
+             width: 180.0,
+           )
+
+         ],
+       ),);
+      });
+  }
+
+}
+
+class FovuriteInstructersPage extends StatefulWidget{
+  @override
+  _FovuriteInstructersPageState createState() => _FovuriteInstructersPageState();
+
+}
+
+class _FovuriteInstructersPageState extends State<FovuriteInstructersPage> {
+  List widgets = [];
+  List teachers = [
+    ['isim', 'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow'],
+    ['isim2', 'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow'],
+    ['isim3', 'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow'],
+    ['isim4', 'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow'],
+    ['isim5', 'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow'],
+  ];
+  @override
+  Widget build(BuildContext context) {
+    teachers.forEach((element) {
+      widgets.add(Column(
+        children: [
+          ClipOval(
+            child: Image.network(element[1]),
+          ),
+          Text(element[0])
+        ],
+      ));
+    });
+    return Column(
+      children: [
+        Wrap(
+          children: [widgets[1]],
+        )
+      ],
+    );
+  }
+
+
+}
+
+Widget LessonCard(double size){
   return Container(
     color: Colors.grey,
-    width: 120.0,
-    height: 120.0,
+    width: size,
+    height: size,
   );
 }
 
@@ -168,7 +255,7 @@ Widget SuggestedLessonCard(){
   return Container(
     child: Column(
     children: [
-      LessonCard(),
+      LessonCard(120),
       ///Todo: Açıklamaları yaz.
     ],
   ),
