@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:harman2021hackathon/models/lessonModel.dart';
 
 class AvailableLessons extends StatefulWidget {
   @override
@@ -55,16 +56,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Column(
         children: [
-          Padding(
+          Align(child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text('Öneriler'),
           ),
-          SizedBox(height: 160.0, child: SuggestedBar()),
+            alignment: Alignment.centerLeft
+               ),
+          SizedBox(height: 202.0, child: SuggestedBar()),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('filtre bölümü buraya gelecek'),
+            child: Text('filtre bölümü buraya gelecek', style: TextStyle(color: Colors.white),),
           ),
           Expanded(child: TrendsList()),
         ],
@@ -86,25 +90,16 @@ class SuggestedBar extends StatelessWidget {
       itemCount: fakeList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return Card(
-          child: Column(
+        return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              LessonCard(170),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  color: Colors.red,
-                  width: 80.0,
-                  height: 80.0,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(fakeList[index]),
+                child: Text(fakeList[index],style: TextStyle(color: Colors.white),),
               ),
             ],
-          ),
         );
       },
     );
@@ -143,14 +138,10 @@ class _TrendsListState extends State<TrendsList> {
       itemCount: data.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Card(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Center(
-              child: Text(data[index]),
-            ),
-          ),
-        );
+        return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('${index + 1}) ${data[index]}',style: TextStyle(color: Colors.white38),),
+          );
       },
     );
   }
@@ -158,7 +149,7 @@ class _TrendsListState extends State<TrendsList> {
 
 Widget LessonCard(double size){
   return Container(
-    color: Colors.grey,
+    color: Color.fromRGBO(196, 196, 196, 1),
     width: size,
     height: size,
   );
