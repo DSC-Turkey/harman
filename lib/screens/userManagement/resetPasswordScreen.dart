@@ -13,9 +13,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Reset Password'),
-      ),
+      backgroundColor: Colors.black,
       body: Center(
         child: resetPasswordForm(),
       ),
@@ -25,35 +23,53 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Widget resetPasswordForm() {
     return Form(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Forgot your password?'),
-          Text('We will send you a link to reset your password'),
-          TextFormField(
-            key: Key('emailFieldKey'),
-            controller: emailController,
-            decoration: InputDecoration(
-              labelText: 'Enter Email Address',
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+          SizedBox(
+            child: TextFormField(
+              style: TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+              key: Key('emailFieldKey'),
+              controller: emailController,
+              decoration: InputDecoration(
+                  hintText: 'e-mail',
+                  hintStyle: TextStyle(color: Colors.white54),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder:
+                  UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Enter Email Address';
+                } else if (!value.contains('@')) {
+                  return 'Please enter a valid email address!';
+                }
+                return null;
+              },
             ),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Enter Email Address';
-              } else if (!value.contains('@')) {
-                return 'Please enter a valid email address!';
-              }
-              return null;
-            },
+            width: MediaQuery.of(context).size.width/2,
           ),
+          SizedBox(height: 30,),
           isLoading
               ? CircularProgressIndicator()
               : RaisedButton(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
             key: Key('resetButtonKey'),
-            color: Colors.lightBlue,
-            onPressed: null,
-            child: Text('Reset Password'),
+            color: Colors.white,
+            onPressed: () {
+
+            },
+            child: Text('Kurtarma kodu gönder', style: TextStyle(color: Colors.black)),
+          ),
+          RaisedButton(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+            color: Color.fromRGBO(38, 50, 56, 1),
+            onPressed: () {
+
+            },
+            child: Text('giriş yap', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
