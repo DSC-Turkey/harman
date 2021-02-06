@@ -61,11 +61,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           Align(child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('Öneriler'),
+            child: Text('Bunlara da göz atmalısın', style: TextStyle(color: Colors.white),),
           ),
             alignment: Alignment.centerLeft
                ),
-          SizedBox(height: 202.0, child: SuggestedBar()),
+          SizedBox(height: 230.0, child: SuggestedBar()),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text('filtre bölümü buraya gelecek', style: TextStyle(color: Colors.white),),
@@ -94,10 +94,13 @@ class SuggestedBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              LessonCard(170),
+              SuggestedLessonCard(170),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(fakeList[index],style: TextStyle(color: Colors.white),),
+                child: SizedBox(
+                  width: 170,
+                  child: Text(fakeList[index],style: TextStyle(color: Colors.white, ),textAlign: TextAlign.center, maxLines: 2,),
+                )
               ),
             ],
         );
@@ -155,11 +158,27 @@ Widget LessonCard(double size){
   );
 }
 
-Widget SuggestedLessonCard(){
+Widget SuggestedLessonCard(double size){
   return Container(
-    child: Column(
+    width: size,
+    height: size,
+    child: Stack(
     children: [
-      LessonCard(120),
+      LessonCard(size),
+      Align(
+        alignment: Alignment.topLeft,
+        child: Stack(
+          children: [
+
+            Text('data', style: TextStyle(color: Colors.green, backgroundColor: Colors.red ),),],
+        ),
+      ),
+      Align(
+        alignment: Alignment.bottomLeft,
+        child: Stack(
+          children: [Text('data', style: TextStyle(color: Colors.green, backgroundColor: Colors.red ),),],
+        ),
+      ),
       ///Todo: Açıklamaları yaz.
     ],
   ),
