@@ -8,12 +8,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //PageView Sayfaları
   List<Widget> pages = [
+    Container(
+      child: Text('ana sayfa'),
+    ),
     AvailableLessons(),
     Container(
-      color: Colors.cyan,
-    ),
-    Container(
-      color: Colors.deepPurple,
+      child: Text('Favori eğitmenler'),
     ),
   ];
   //Başlangıç sayfası
@@ -24,10 +24,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+
         title: Text('Ders Uygulaması'),
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        backgroundColor: Color.fromRGBO(38,50,56,1),
       ),
       body: PageView(
         controller: pageController,
@@ -40,22 +42,24 @@ class _HomePageState extends State<HomePage> {
         children: pages,
       ),
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color.fromRGBO(38,50,56,1),
         items: [
           BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Sayfa1',
+          icon: Icon(Decoration().homeIcon,),
+          label: 'Ana sayfa',
         ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Sayfa2',
+            icon: Icon(Decoration().bookIcon),
+            label: 'Derslerim',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Sayfa3',
+            icon: Icon(Decoration().favoritesIcon),
+            label: 'Favori Eğitmenler',
           ),
         ],
         currentIndex: pageNum,
-        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.white,
         onTap:(index) {
           setState(() {
             pageNum = index;
@@ -112,6 +116,13 @@ class _AvailableLessonsState extends State<AvailableLessons> {
   }
 
 }
-class Decoration{
+class Decoration {
+  IconData notificationIcon = Icons.notifications;
+  IconData searchIcon = Icons.search;
+  IconData userIcon = Icons.account_circle;
+  IconData starIcon = Icons.star;
+  IconData homeIcon = Icons.home;
+  IconData favoritesIcon = Icons.favorite_border_outlined;
+  IconData bookIcon = Icons.book;
 
 }
