@@ -1,6 +1,9 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/screens/Favoruite.dart';
+
 import 'screens/homeScreen.dart';
+import 'screens/myFavoriteInstructorsScreen.dart';
 import 'screens/myLessonsScreen.dart';
 
 void main() {
@@ -30,8 +33,8 @@ class _NavigationPageState extends State<NavigationPage> {
   ///NavigationBar için sayfalar
   List<Widget> pages = [
     HomePage(),
-    MyLessonsPage(),//Todo: MyLessonsPage()
-    FovuriteInstructersPage(),//Todo: FovuriteInstructersPage()
+    MyLessonsPage(),
+    MyFavouriteInstructorsPage(),
   ];
 
   int pageNum = 0;

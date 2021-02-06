@@ -1,7 +1,4 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/models/lessonModel.dart';
 
 import 'homeScreen.dart';
 
