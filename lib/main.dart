@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///D:/GitHub/harman2021hackathon/lib/screens/homeScreen.dart';
+import 'screens/homeScreen.dart';
 
 void main() {
   runApp(MyApp());
