@@ -31,10 +31,10 @@ class AuthService {
           if (snapshot.hasError) {
             throw snapshot.error.toString();
           } else if (snapshot.hasData) {
-            print("debug: user detected");
+            print('debug: user detected');
             return homePage; //main page
           } else {
-            print("debug: user not found");
+            print('debug: user not found');
             return loginPage; //login page
           }
         });
@@ -43,10 +43,10 @@ class AuthService {
   /// E-mail ile kaydolmayı sağlar.
   static Future signUpWithEmail(String email, String password) async {
     try {
-      print("debug: signing up with email...");
+      print('debug: signing up with email...');
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      print("debug: signed up with email.");
+      print('debug: signed up with email.');
       return true;
     } on FirebaseAuthException catch (e) {
       print('Failed with error code: ${e.code}');
@@ -61,13 +61,13 @@ class AuthService {
   /// E-mail ile giriş yapmayı sağlar.
   static Future signInWithEmail(String email, String password) async {
     try {
-      print("debug: signing in with email...");
+      print('debug: signing in with email...');
       //region Cihaza kullanıcıyı kaydetme
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('email', email);
       //endregion
       await auth.signInWithEmailAndPassword(email: email, password: password);
-      print("debug: signed in with email.");
+      print('debug: signed in with email.');
       return true;
     } on FirebaseAuthException catch (e) {
       print('Failed with error code: ${e.code}');
@@ -83,13 +83,13 @@ class AuthService {
   /// Cihaza kayıtlı e-mail adresini de siler.
   static Future signOut() async {
     try {
-      print("debug: signing out...");
+      print('debug: signing out...');
       //region Kullanıcıyı cihazdan silme
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('email', null);
       //endregion
       await auth.signOut();
-      print("debug: signed out.");
+      print('debug: signed out.');
       return true;
     } on FirebaseAuthException catch (e) {
       print('Failed with error code: ${e.code}');
@@ -104,9 +104,9 @@ class AuthService {
   /// Hesap şifresini sıfırlamak için kullanıcıya kayıtlı e-mail adresine şifre sıfırlama maili gönderir.
   static Future resetPassword(String email) async {
     try {
-      print("debug: reseting password...");
+      print('debug: reseting password...');
       await auth.sendPasswordResetEmail(email: email);
-      print("debug: reset password email sent");
+      print('debug: reset password email sent');
       return true;
     } on FirebaseAuthException catch (e) {
       print('Failed with error code: ${e.code}');
@@ -135,7 +135,7 @@ class ShowErrorMessage extends StatelessWidget {
         content: Text(errMessage),
         actions: [
           FlatButton(
-            child: Text("Ok"),
+            child: Text('Ok'),
             onPressed: () {
               Navigator.of(context).pop();
             },
