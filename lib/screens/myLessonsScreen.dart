@@ -1,5 +1,7 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/models/lessonModel.dart';
 
 import 'homeScreen.dart';
 
@@ -18,8 +20,18 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
     ['title', 'teacher', 'maxStudentValue', 'descriptions'],
     ['title', 'teacher', 'maxStudentValue', 'descriptions']
   ];
+
   @override
   Widget build(BuildContext context) {
+    return getListViewData();
+  }
+
+  Widget getListViewData(){
+    //TODO: Future get
+    return buildListView(lessons);
+  }
+
+  Widget buildListView(lessons){
     return ListView.builder(
         itemCount: lessons.length,
         itemBuilder: (context, index) {
@@ -28,7 +40,7 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
             child: Row(
               children: [
                 LessonCard(180),
-                SizedBox(
+                Expanded(
                   child: Padding(
                     padding: EdgeInsets.all(10),
                     child:  Column(
@@ -40,12 +52,10 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
                       ],
                     ),
                   ),
-                  width: 180.0,
                 )
 
               ],
             ),);
         });
   }
-
 }
