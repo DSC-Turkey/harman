@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "189652412370",
+    "project_id": "harman-b2864",
+    "storage_bucket": "harman-b2864.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189652412370:android:10fba005c03e518a878a0b",
+        "android_client_info": {
+          "package_name": "com.yedihilal.harman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189652412370-bjpunsqlsi8umr1mmpkkl4k0a68l9rr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl6z3j2gyRaQ4L95NbxiBp17Iz4ZDz8HY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "189652412370-bjpunsqlsi8umr1mmpkkl4k0a68l9rr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
