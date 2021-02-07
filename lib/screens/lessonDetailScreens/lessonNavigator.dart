@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lessonChatPage.dart';
 import 'lessonDetailsPage.dart';
+import 'lessonInstructorPage.dart';
 
 
 class LessonNavigatorPage extends StatefulWidget{
@@ -28,9 +29,7 @@ class _lessonNavigatorPageState extends State<LessonNavigatorPage>{
           body: TabBarView(
             children: [
               LessonDetailsPage(),
-              Scaffold(
-                backgroundColor: Colors.red,
-              ),
+              LessonInstructorPage(),
               LessonChatPage()
             ],
           ),
