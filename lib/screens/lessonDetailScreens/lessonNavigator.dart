@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'lessonChatPage.dart';
 import 'lessonDetailsPage.dart';
 
 
@@ -31,9 +31,7 @@ class _lessonNavigatorPageState extends State<LessonNavigatorPage>{
               Scaffold(
                 backgroundColor: Colors.red,
               ),
-              Scaffold(
-                backgroundColor: Colors.green,
-              )
+              LessonChatPage()
             ],
           ),
         ),
