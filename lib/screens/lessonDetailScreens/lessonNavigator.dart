@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/screens/commonScreens/SearchScreen.dart';
 import 'package:harman2021hackathon/themes/themes.dart';
 import 'lessonChatPage.dart';
 import 'lessonDetailsPage.dart';
@@ -13,6 +14,7 @@ class _lessonNavigatorPageState extends State<LessonNavigatorPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 0,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
@@ -28,7 +30,9 @@ class _lessonNavigatorPageState extends State<LessonNavigatorPage> {
           ),
           actions: [
             IconButton(
-                icon: Icon(Icons.search, color: ThemeColors.grey), onPressed: null),
+                icon: Icon(Icons.search, color: ThemeColors.grey), onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
+            }),
             IconButton(
                 icon: Icon(Icons.notifications, color: ThemeColors.grey),
                 onPressed: null),
