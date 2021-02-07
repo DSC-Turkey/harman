@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/service/auth.dart';
-import 'package:harman2021hackathon/service/database.dart';
-import 'package:harman2021hackathon/themes/themes.dart';
+import '../../service/auth.dart';
+import '../../service/database.dart';
+import '../../themes/themes.dart';
 import 'loginScreen.dart';
 
 class SignUpPage extends StatefulWidget {

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/screens/commonScreens/SearchScreen.dart';
 
 import 'screens/mainScreens/homeScreen.dart';
 import 'screens/mainScreens/myFavoriteInstructorsScreen.dart';
@@ -68,7 +69,9 @@ class _NavigationPageState extends State<NavigationPage> {
               IconButton(
                 icon: Icon(Icons.search,color: ThemeColors.grey,),
                 color: Colors.white,
-                onPressed: null,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
+                },
               ),
               IconButton(
                 icon: Icon(Icons.notifications,color: ThemeColors.grey),
