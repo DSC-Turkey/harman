@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/service/database.dart';
 import 'package:harman2021hackathon/themes/themes.dart';
 import '../../main.dart';
 import '../../screens/mainScreens/homeScreen.dart';
@@ -49,7 +50,7 @@ class _searchScreenState extends State<SearchScreen> {
           )
         ],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: ThemeColors.background,
       body: Column(
         children: [
           Padding(
@@ -61,13 +62,14 @@ class _searchScreenState extends State<SearchScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        color: ThemeColors.background,
-                      ),
-                      onPressed: () {
-                        
-                      }),
+                    icon: Icon(
+                      Icons.search,
+                      color: ThemeColors.background,
+                    ),
+                    // onPressed: () {
+                    // DatabaseService.basicSearch(searchController.text);
+                    // }
+                  ),
                   Expanded(
                       child: TextField(
                     controller: searchController,

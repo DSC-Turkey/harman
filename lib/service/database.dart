@@ -6,7 +6,7 @@ class DatabaseService {
   static final fire = FirebaseFirestore.instance;
   static final CollectionReference userCollection = fire.collection('users');
   // static final CollectionReference userCollection = fire.collection('users');
-  // static final CollectionReference lessonCollection = fire.collection('lessons');
+  static final CollectionReference lessonCollection = fire.collection('lessons');
 
   static void newUser({String userName, String email}) {
     var data = {
@@ -39,6 +39,6 @@ class DatabaseService {
   }
 
   static void basicSearch(searchText) {
-    // databaseReference.orderByChild('_searchLastName').startAt(searchText).endAt(searchText+"\uf8ff");
+   lessonCollection.startAt(searchText).endAt(searchText+"\uf8ff");
   }
 }
