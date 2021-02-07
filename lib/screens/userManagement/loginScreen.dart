@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:harman2021hackathon/main.dart';
 import 'package:harman2021hackathon/screens/mainScreens/homeScreen.dart';
+import 'package:harman2021hackathon/screens/userManagement/resetPasswordScreen.dart';
 import 'package:harman2021hackathon/screens/userManagement/signUpScreen.dart';
 import 'package:harman2021hackathon/service/auth.dart';
 
@@ -92,7 +93,9 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.all(Radius.circular(10))),
           child:
               Text('Forgot password?', style: TextStyle(color: Colors.white)),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ResetPasswordPage()));
+          },
         ),
         isLoading
             ? CircularProgressIndicator()

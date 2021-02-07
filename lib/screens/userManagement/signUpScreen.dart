@@ -35,8 +35,8 @@ class _SignUpPageState extends State<SignUpPage> {
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               textAlign: TextAlign.center,
-              key: Key('passwordFieldKey'),
-              controller: passwordController,
+              key: Key('nameFieldKey'),
+              controller: nameController,
               decoration: InputDecoration(
                   hintText: 'Kullanıcı adı',
                   hintStyle: TextStyle(color: Colors.white54),
@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Kullanıcı adı';
+                  return 'Kullanıcı adı giriniz';
                 }
                 return null;
               },
@@ -73,7 +73,9 @@ class _SignUpPageState extends State<SignUpPage> {
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value.isEmpty) {
-                  return 'Enter User Name';
+                  return 'Enter an Email Address';
+                } else if (!value.contains('@')) {
+                  return 'Please enter a valid email address';
                 }
                 return null;
               },
@@ -101,9 +103,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 // The validator receives the text that the user has entered.
                 validator: (value) {
                   if (value.isEmpty) {
-                    return 'Enter an Email Address';
-                  } else if (!value.contains('@')) {
-                    return 'Please enter a valid email address';
+                    return 'Enter Password';
+                  }else if (value.length < 6){
+                    return 'şifre en az 6 basamaklı olmalı';
                   }
                   return null;
                 },
