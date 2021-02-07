@@ -1,50 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-// class AvailableLessons extends StatefulWidget {
-//   @override
-//   _AvailableLessonsState createState() => _AvailableLessonsState();
-// }
-//
-// class _AvailableLessonsState extends State<AvailableLessons> {
-//   List lessonsList = [
-//     ['lesson1', 'Math', 20],
-//     ['lesson2', 'History', 10],
-//     ['lesson3', 'Scince', 30],
-//     ['lesson4', 'English', 25],
-//     ['lesson5', 'Turkish', 22],
-//     ['lesson6', 'Deutch', 20],
-//     ['lesson7', 'Coding', 18],
-//     ['lesson8', 'Scince', 35],
-//     ['lesson9', 'Math', 15],
-//     ['lesson10', 'Math', 30],
-//     ['lesson11', 'Math', 5],
-//     ['lesson12', 'Math', 8],
-//     ['lesson13', 'Math', 10],
-//     ['lesson14', 'Math', 20],
-//     ['lesson15', 'Math', 25],
-//     ['lesson16', 'Math', 23],
-//     ['lesson17', 'Math', 28],
-//   ];
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-//       itemCount: lessonsList.length,
-//       itemBuilder: (context, index) {
-//         return Card(
-//           child: ListTile(
-//             title: Text(lessonsList[index][0]),
-//             subtitle: Text(lessonsList[index][1]),
-//             trailing: Text('kişi sayısı: ${lessonsList[index][2].toString()}'),
-//           ),
-//           shape:
-//               RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-//         );
-//       },
-//     );
-//   }
-// }
 
 class HomePage extends StatefulWidget {
   @override
@@ -76,6 +30,11 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+//Todo: future operation planlandı
+Widget getSuggested(){
+  return null;
+}
+
 class SuggestedBar extends StatelessWidget {
   final List<String> fakeList = [
     'Yavuz Selim Yayla ile Temel Yazılım',
@@ -89,19 +48,24 @@ class SuggestedBar extends StatelessWidget {
       itemCount: fakeList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
-        return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SuggestedLessonCard(170),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: 170,
-                  child: Text(fakeList[index],style: TextStyle(color: Colors.white, ),textAlign: TextAlign.center, maxLines: 2,),
-                )
-              ),
-            ],
+        return GestureDetector(
+          onTap: () {
+            print('horizantal $index');
+          },
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SuggestedLessonCard(170),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 170,
+                    child: Text(fakeList[index],style: TextStyle(color: Colors.white, ),textAlign: TextAlign.center, maxLines: 2,),
+                  )
+                ),
+              ],
+          ),
         );
       },
     );
@@ -140,10 +104,15 @@ class _TrendsListState extends State<TrendsList> {
       itemCount: data.length,
       shrinkWrap: true,
       itemBuilder: (context, index) {
-        return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('${index + 1}) ${data[index]}',style: TextStyle(color: Colors.white38),),
-          );
+        return GestureDetector(
+          onTap: () {
+            print('vertical $index');
+          },
+          child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('${index + 1}) ${data[index]}',style: TextStyle(color: Colors.white38),),
+            ),
+        );
       },
     );
   }

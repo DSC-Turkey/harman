@@ -39,8 +39,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  enabledBorder:
-                  UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white))),
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value.isEmpty) {
@@ -51,32 +51,42 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 return null;
               },
             ),
-            width: MediaQuery.of(context).size.width/2,
+            width: MediaQuery.of(context).size.width / 2,
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           isLoading
               ? CircularProgressIndicator()
               : RaisedButton(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-            key: Key('resetButtonKey'),
-            color: Colors.white,
-            onPressed: () async {
-              await AuthService.resetPassword(emailController.text);
-              // ignore: unawaited_futures
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-            },
-            child: Text('Kurtarma kodu gönder', style: TextStyle(color: Colors.black)),
-          ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  key: Key('resetButtonKey'),
+                  color: Colors.white,
+                  onPressed: _onPressedReset,
+                  child: Text('Kurtarma kodu gönder',
+                      style: TextStyle(color: Colors.black)),
+                ),
           RaisedButton(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
             color: Color.fromRGBO(38, 50, 56, 1),
-            onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-            },
+            onPressed: _onPressedLogin,
             child: Text('giriş yap', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
     );
+  }
+
+  void _onPressedReset() async {
+    await AuthService.resetPassword(emailController.text);
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  void _onPressedLogin() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }

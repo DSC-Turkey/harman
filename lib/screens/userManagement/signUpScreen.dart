@@ -30,55 +30,57 @@ class _SignUpPageState extends State<SignUpPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width/2,
+            width: MediaQuery.of(context).size.width / 2,
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               textAlign: TextAlign.center,
               key: Key('passwordFieldKey'),
-              obscureText: true,
               controller: passwordController,
-              decoration:InputDecoration(
+              decoration: InputDecoration(
                   hintText: 'Kullanıcı adı',
                   hintStyle: TextStyle(color: Colors.white54),
                   focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.white),
                   ),
-                  enabledBorder:
-                  UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white))),
               // The validator receives the text that the user has entered.
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Kullanıcı adı';
-                } return null;
+                }
+                return null;
               },
-            ),),
+            ),
+          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width/2,
+            width: MediaQuery.of(context).size.width / 2,
             child: TextFormField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
               textAlign: TextAlign.center,
-            key: Key('nameFieldKey'),
-            controller: nameController,
-            decoration: InputDecoration(
-                hintText: 'e-mail',
-                hintStyle: TextStyle(color: Colors.white54),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                enabledBorder:
-                UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
-            // The validator receives the text that the user has entered.
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Enter User Name';
-              }
-              return null;
-            },
-          ),),
+              key: Key('nameFieldKey'),
+              controller: nameController,
+              decoration: InputDecoration(
+                  hintText: 'e-mail',
+                  hintStyle: TextStyle(color: Colors.white54),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white))),
+              // The validator receives the text that the user has entered.
+              validator: (value) {
+                if (value.isEmpty) {
+                  return 'Enter User Name';
+                }
+                return null;
+              },
+            ),
+          ),
           SizedBox(
-            width: MediaQuery.of(context).size.width/2,
+            width: MediaQuery.of(context).size.width / 2,
             child: Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: TextFormField(
@@ -87,14 +89,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 textAlign: TextAlign.center,
                 key: Key('emailFieldKey'),
                 controller: emailController,
+                obscureText: true,
                 decoration: InputDecoration(
                     hintText: 'şifre',
                     hintStyle: TextStyle(color: Colors.white54),
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),
                     ),
-                    enabledBorder:
-                    UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))),
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white))),
                 // The validator receives the text that the user has entered.
                 validator: (value) {
                   if (value.isEmpty) {
@@ -105,38 +108,61 @@ class _SignUpPageState extends State<SignUpPage> {
                   return null;
                 },
               ),
-            ),),
-          SizedBox(height: 30,),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
           isLoading
               ? CircularProgressIndicator()
               : Row(
-            children: [
-              Spacer(),
-              RaisedButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                onPressed: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                },
-                color: Colors.white,
-                child: Text('Hesabım var', style: TextStyle(color: Colors.black)),
-              ),
-              Spacer(),
-              RaisedButton(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
-                key: Key('submitButtonKey'),
-                color: Colors.white,
-                onPressed: () async {
-                 await AuthService.signUpWithEmail(emailController.text, passwordController.text);
-                 // ignore: unawaited_futures
-                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage()));
-                },
-                child: Text('kaydol', style: TextStyle(color: Colors.black)),
-              ),
-              Spacer(),
-            ],
-          )
+                  children: [
+                    Spacer(),
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      onPressed: onPressedGotAcc,
+                      color: Colors.white,
+                      child: Text('Hesabım var',
+                          style: TextStyle(color: Colors.black)),
+                    ),
+                    Spacer(),
+                    RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      key: Key('submitButtonKey'),
+                      color: Colors.white,
+                      onPressed: _onPressedSubmit,
+                      child:
+                          Text('kaydol', style: TextStyle(color: Colors.black)),
+                    ),
+                    Spacer(),
+                  ],
+                )
         ],
       ),
     );
+  }
+
+  void onPressedGotAcc() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => LoginPage()));
+  }
+
+  void _onPressedSubmit() async {
+    isLoading = true;
+    var result = await AuthService.signUpWithEmail(
+        emailController.text, passwordController.text);
+    if(result == true){
+      await Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
+      isLoading = false;
+    }
+    else {
+      isLoading = false;
+      ShowErrorMessage(
+        type: 'testType',
+        errMessage: 'testErrorMessage',);
+    }
   }
 }

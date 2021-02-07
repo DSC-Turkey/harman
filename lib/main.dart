@@ -1,11 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/mainScreens/homeScreen.dart';
 import 'screens/mainScreens/myFavoriteInstructorsScreen.dart';
 import 'screens/mainScreens/myLessonsScreen.dart';
+import 'screens/userManagement/loginScreen.dart';
 import 'screens/userManagement/testScreen.dart';
+import 'service/auth.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -18,7 +24,7 @@ class MyApp extends StatelessWidget {
         '/navigation': (context) => NavigationPage(),
         '/home': (context) => HomePage(),
       },
-      home: NavigationPage(),
+      home: AuthService.authHandler(context, NavigationPage(), LoginPage()),
     );
   }
 }
@@ -53,7 +59,8 @@ class _NavigationPageState extends State<NavigationPage> {
               Icon(Icons.ac_unit),
               RaisedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => TestScreen()));
                   },
                   child: Icon(Icons.ac_unit)),
             ],

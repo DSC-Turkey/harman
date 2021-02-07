@@ -32,27 +32,32 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
     return ListView.builder(
         itemCount: lessons.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                LessonCard(180),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child:  Column(
-                      children: [
-                        Text(lessons[index][0],style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                        Padding(padding: EdgeInsets.only(bottom: 20), child: Text(lessons[index][1],style: TextStyle(color: Colors.grey),),),
-                        Text(lessons[index][2],style: TextStyle(color: Colors.white),),
-                        Text(lessons[index][3],style: TextStyle(color: Colors.white),)
-                      ],
+          return GestureDetector(
+            onTap: () {
+              print('mylessons $index');
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  LessonCard(180),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child:  Column(
+                        children: [
+                          Text(lessons[index][0],style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
+                          Padding(padding: EdgeInsets.only(bottom: 20), child: Text(lessons[index][1],style: TextStyle(color: Colors.grey),),),
+                          Text(lessons[index][2],style: TextStyle(color: Colors.white),),
+                          Text(lessons[index][3],style: TextStyle(color: Colors.white),)
+                        ],
+                      ),
                     ),
-                  ),
-                )
+                  )
 
-              ],
-            ),);
+                ],
+              ),),
+          );
         });
   }
 }

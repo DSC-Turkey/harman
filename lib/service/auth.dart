@@ -125,6 +125,7 @@ class ShowErrorMessage extends StatelessWidget {
   final String type;
   final String errMessage;
 
+
   ShowErrorMessage({this.type, this.errMessage});
 
   @override
