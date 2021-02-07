@@ -5,8 +5,8 @@ import 'screens/mainScreens/homeScreen.dart';
 import 'screens/mainScreens/myFavoriteInstructorsScreen.dart';
 import 'screens/mainScreens/myLessonsScreen.dart';
 import 'screens/userManagement/loginScreen.dart';
-import 'screens/userManagement/testScreen.dart';
 import 'service/auth.dart';
+import 'service/chatTest.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +60,7 @@ class _NavigationPageState extends State<NavigationPage> {
               RaisedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => TestScreen()));
+                        MaterialPageRoute(builder: (context) => ChatTest()));
                   },
                   child: Icon(Icons.ac_unit)),
             ],

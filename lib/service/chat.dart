@@ -2,24 +2,32 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ChatService{
+class ChatService {
   static final fire = FirebaseFirestore.instance;
   static final chatCollection = fire.collection('groupChat');
 
-  dynamic a(context, groupChatId ){
-    return StreamBuilder(
-        //stream: chatCollection.doc(groupChatId).collection(groupChatId).orderBy('timestamp', descending: true).limit(_limit).snapshots(),
-    builder: (context, snapshot) {
-          if(!snapshot.hasData){
-            return Center(child: CircularProgressIndicator(),);
-          }
-          else{
-            var listMessage = snapshot.data;
+  static Widget getMessages(context, groupChatId) {
+    return StreamBuilder<QuerySnapshot>(
+        stream:
+            chatCollection.doc(groupChatId).collection('messages').snapshots(),
+        builder: (context, snapshot) {
+          var messageList = [];
+          snapshot.data.docs.forEach((element) {
+            //Todo: mesaj formatına çevir
+            messageList.add(element);
+          });
+
+          if (!snapshot.hasData) {
+            return null;
+          } else {
             return ListView.builder(
-              itemCount:  null,
+              itemCount: messageList.length,
+              reverse: true,
+              itemBuilder: (context, index) {
+                return Text(messageList[index].toString());
+              },
             );
           }
-    }
-    );
+        });
   }
 }

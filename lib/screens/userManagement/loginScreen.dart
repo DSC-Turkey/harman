@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
     bool result = await AuthService.signInWithEmail(
         emailController.text, passwordController.text);
     if(result == true){
-      await Navigator.push(
+      await Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => NavigationPage()));
       isLoading = false;
     }
