@@ -61,7 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
               cursorColor: Colors.white,
               textAlign: TextAlign.center,
               key: Key('nameFieldKey'),
-              controller: nameController,
+              controller: emailController,
               decoration: InputDecoration(
                   hintText: 'e-mail',
                   hintStyle: TextStyle(color: Colors.white54),
@@ -90,7 +90,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 cursorColor: Colors.white,
                 textAlign: TextAlign.center,
                 key: Key('emailFieldKey'),
-                controller: emailController,
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                     hintText: 'şifre',
