@@ -153,12 +153,10 @@ Widget SuggestedLessonCard(double size) {
           alignment: Alignment.topLeft,
           child: Stack(
             children: [
-              Text(
-                ' data ',
-                style: TextStyle(
-                    color: ThemeColors.fontColorLight,
-                    backgroundColor: ThemeColors.accent),
-              ),
+              Text(' data ',
+                  style: TextStyle(
+                      color: ThemeColors.fontColorLight,
+                      backgroundColor: ThemeColors.accent)),
             ],
           ),
         ),
@@ -166,12 +164,10 @@ Widget SuggestedLessonCard(double size) {
           alignment: Alignment.bottomLeft,
           child: Stack(
             children: [
-              Text(
-                ' data ',
-                style: TextStyle(
-                    color: ThemeColors.fontColorLight,
-                    backgroundColor: ThemeColors.accent),
-              ),
+              Text(' data ',
+                  style: TextStyle(
+                      color: ThemeColors.fontColorLight,
+                      backgroundColor: ThemeColors.accent)),
             ],
           ),
         ),

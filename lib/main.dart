@@ -68,7 +68,6 @@ class _NavigationPageState extends State<NavigationPage> {
             children: [
               IconButton(
                 icon: Icon(Icons.search,color: ThemeColors.grey,),
-                color: Colors.white,
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SearchScreen()));
                 },

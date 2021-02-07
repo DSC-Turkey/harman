@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/service/database.dart';
 import 'package:harman2021hackathon/themes/themes.dart';
 import '../../main.dart';
 import '../../screens/mainScreens/homeScreen.dart';
