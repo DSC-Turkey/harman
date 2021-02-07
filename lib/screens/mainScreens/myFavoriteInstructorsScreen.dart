@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:harman2021hackathon/themes/themes.dart';
 
 class MyFavouriteInstructorsPage extends StatefulWidget {
@@ -7,7 +8,7 @@ class MyFavouriteInstructorsPage extends StatefulWidget {
 }
 
 class _MyFavouriteInstructorsPageState extends State<MyFavouriteInstructorsPage> {
-  List instructors = ['name 1', 'name 2', 'name 3', 'name 4', 'name 5'];
+  List instructors = ['name 1', 'name 2', 'name 3', 'name 4', 'name 5','name 1', 'name 2', 'name 3', 'name 4', 'name 5','name 1', 'name 2', 'name 3', 'name 4', 'name 5'];
   String def = 'https://miro.medium.com/max/1000/1*Uv7vQj-WnJNVMBrQ8iaWYQ.jpeg';
 
   @override
@@ -38,6 +39,7 @@ class _MyFavouriteInstructorsPageState extends State<MyFavouriteInstructorsPage>
       },
       child: Card(
         color: Colors.transparent,
+        shadowColor: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

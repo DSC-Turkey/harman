@@ -6,7 +6,7 @@ import '../models/messageModel.dart';
 
 class ChatService {
   static final fire = FirebaseFirestore.instance;
-  static final chatCollection = fire.collection('groupChat');
+  static final chatCollection = fire.collection('lessons');
 
   static Widget getMessages(context, groupChatId) {
     return StreamBuilder<QuerySnapshot>(

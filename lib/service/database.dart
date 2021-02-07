@@ -5,6 +5,8 @@ import '../service/auth.dart';
 class DatabaseService {
   static final fire = FirebaseFirestore.instance;
   static final CollectionReference userCollection = fire.collection('users');
+  // static final CollectionReference userCollection = fire.collection('users');
+  // static final CollectionReference lessonCollection = fire.collection('lessons');
 
   static void newUser({String userName, String email}) {
     var data = {
@@ -34,5 +36,9 @@ class DatabaseService {
     user.id = data['userId'];
     user.userName = data['userName'];
     user.email = data['email'];
+  }
+
+  static void basicSearch(searchText) {
+    // databaseReference.orderByChild('_searchLastName').startAt(searchText).endAt(searchText+"\uf8ff");
   }
 }
