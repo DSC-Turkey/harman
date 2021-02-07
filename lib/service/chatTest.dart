@@ -7,6 +7,17 @@ class ChatTest extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChatService.getMessages(context, '1234'),
-      );
+      bottomNavigationBar: Row(
+        children: [
+          RaisedButton(
+            child: Text('ekle'),
+            onPressed: () {
+              ChatService.sendMessages(
+                  groupChatId: '1234', message: 'deneme mesajı');
+            },
+          )
+        ],
+      ),
+    );
   }
 }

@@ -7,8 +7,7 @@ class MyFavouriteInstructorsPage extends StatefulWidget {
 
 class _MyFavouriteInstructorsPageState extends State<MyFavouriteInstructorsPage> {
   List instructors = ['name 1', 'name 2', 'name 3', 'name 4', 'name 5'];
-  String def =
-      'https://lh3.googleusercontent.com/proxy/TxtAkIsp-rQIBXwScmooxyhgl2Qt-HisMX-gAbeiPaNOdtaBUnlXcT1-I6PeR-NOMJRTR7VNrtfZWjt3oIxIBrlEbwht0hf0RkiQumFiOvupEFZ2MyfMWcEE1OXj9ow';
+  String def = 'https://miro.medium.com/max/1000/1*Uv7vQj-WnJNVMBrQ8iaWYQ.jpeg';
 
   @override
   Widget build(BuildContext context) {
