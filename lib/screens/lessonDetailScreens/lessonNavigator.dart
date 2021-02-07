@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/screens/lessons/lessonDetailsPage.dart';
+
+import 'lessonDetailsPage.dart';
+
 
 class LessonNavigatorPage extends StatefulWidget{
   @override

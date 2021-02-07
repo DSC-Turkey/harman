@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/lessonDetailScreens/lessonNavigator.dart';
 import 'homeScreen.dart';
 
 class MyLessonsPage extends StatefulWidget{
@@ -34,7 +35,7 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              print('mylessons $index');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => LessonNavigatorPage()));
             },
             child: Padding(
               padding: EdgeInsets.all(10),
