@@ -8,7 +8,7 @@ import 'screens/userManagement/loginScreen.dart';
 import 'service/auth.dart';
 import 'service/chatTest.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -51,22 +51,34 @@ class _NavigationPageState extends State<NavigationPage> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        leading: Icon(Icons.ac_unit), // Todo: sol menu açıcı
+        leading: IconButton(
+          icon: Icon(Icons.menu,color: Colors.white,),
+          color: Colors.white,
+          onPressed: null,
+        ), // Todo: sol menu açıcı
         actions: [
           Row(
             children: [
-              Icon(Icons.ac_unit),
-              Icon(Icons.ac_unit),
-              RaisedButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ChatTest()));
-                  },
-                  child: Icon(Icons.ac_unit)),
+              IconButton(
+                icon: Icon(Icons.search,color: Colors.white,),
+                color: Colors.white,
+                onPressed: null,
+              ),
+              IconButton(
+                icon: Icon(Icons.notifications,color: Colors.white),
+                onPressed: null,
+              ),
+              IconButton(
+                icon: Icon(Icons.person,color: Colors.white,),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ChatTest()));
+                },
+              ),
             ],
           )
         ],
-        title: Text('Ders Uygulaması'),
+        title: Text('Harman'),
         backgroundColor: Color.fromRGBO(38, 50, 56, 1),
       ),
       body: PageView(
