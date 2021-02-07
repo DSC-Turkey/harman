@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/themes/themes.dart';
 
 import '../../screens/lessonDetailScreens/lessonNavigator.dart';
 import 'homeScreen.dart';
@@ -47,10 +48,10 @@ class _MyLessonsPageState extends State<MyLessonsPage> {
                       padding: EdgeInsets.all(10),
                       child:  Column(
                         children: [
-                          Text(lessons[index][0],style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),),
-                          Padding(padding: EdgeInsets.only(bottom: 20), child: Text(lessons[index][1],style: TextStyle(color: Colors.grey),),),
-                          Text(lessons[index][2],style: TextStyle(color: Colors.white),),
-                          Text(lessons[index][3],style: TextStyle(color: Colors.white),)
+                          Text(lessons[index][0],style: TextStyle(color: ThemeColors.fontColorLight, fontWeight: FontWeight.bold, fontSize: 20),),
+                          Padding(padding: EdgeInsets.only(bottom: 20), child: Text(lessons[index][1],style: TextStyle(color: ThemeColors.grey),),),
+                          Text(lessons[index][2],style: TextStyle(color:ThemeColors.fontColorLight),),
+                          Text(lessons[index][3],style: TextStyle(color: ThemeColors.fontColorLight),)
                         ],
                       ),
                     ),

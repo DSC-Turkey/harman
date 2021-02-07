@@ -6,6 +6,7 @@ import 'package:harman2021hackathon/screens/userManagement/resetPasswordScreen.d
 import 'package:harman2021hackathon/screens/userManagement/signUpScreen.dart';
 import 'package:harman2021hackathon/service/auth.dart';
 import 'package:harman2021hackathon/service/database.dart';
+import 'package:harman2021hackathon/themes/themes.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: ThemeColors.background,
       body: Center(
         child: LoginForm(),
       ),
@@ -39,19 +40,19 @@ class _LoginPageState extends State<LoginPage> {
                   .size
                   .width / 2,
               child: TextFormField(
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: ThemeColors.fontColorLight),
                 cursorColor: Colors.white,
                 textAlign: TextAlign.center,
                 key: Key('emailFieldKey'),
                 controller: emailController,
                 decoration: InputDecoration(
                     hintText: 'e-mail',
-                    hintStyle: TextStyle(color: Colors.white54),
+                    hintStyle: TextStyle(color: ThemeColors.white),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: ThemeColors.fontColorLight),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white))),
+                        borderSide: BorderSide(color: ThemeColors.white))),
 
                 // The validator receives the text that the user has entered.
                 validator: (value) {
@@ -70,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   .size
                   .width / 2,
               child: TextFormField(
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: ThemeColors.fontColorLight),
                 cursorColor: Colors.white,
                 textAlign: TextAlign.center,
                 key: Key('passwordFieldKey'),
@@ -78,12 +79,12 @@ class _LoginPageState extends State<LoginPage> {
                 controller: passwordController,
                 decoration: InputDecoration(
                     hintText: 'şifre',
-                    hintStyle: TextStyle(color: Colors.white54),
+                    hintStyle: TextStyle(color: ThemeColors.white),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: BorderSide(color: ThemeColors.white),
                     ),
                     enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white))),
+                        borderSide: BorderSide(color: ThemeColors.white))),
 
                 // The validator receives the text that the user has entered.
                 validator: (value) {
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child:
-              Text('Şifremi unuttum.', style: TextStyle(color: Colors.white)),
+              Text('Şifremi unuttum.', style: TextStyle(color: ThemeColors.fontColorLight)),
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context) => ResetPasswordPage()));
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 key: Key('submitButtonKey'),
-                color: Colors.white,
+                color: ThemeColors.white,
                 onPressed: _onPressed,
                 child: Text('Onayla'),
               ),
@@ -127,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 color: Color.fromRGBO(38, 50, 56, 1),
-                child: Text('Kaydol', style: TextStyle(color: Colors.white)),
+                child: Text('Kaydol', style: TextStyle(color: ThemeColors.white)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignUpPage()));

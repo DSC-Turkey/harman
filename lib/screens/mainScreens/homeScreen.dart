@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/themes/themes.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,16 +13,22 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.black,
       body: Column(
         children: [
-          Align(child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Bunlara da göz atmalısın', style: TextStyle(color: Colors.white),),
-          ),
-            alignment: Alignment.centerLeft
-               ),
+          Align(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Bunlara da göz atmalısın',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              alignment: Alignment.centerLeft),
           SizedBox(height: 230.0, child: SuggestedBar()),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text('filtre bölümü buraya gelecek', style: TextStyle(color: Colors.white),),
+            child: Text(
+              'filtre bölümü buraya gelecek',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           Expanded(child: TrendsList()),
         ],
@@ -31,7 +38,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 //Todo: future operation planlandı
-Widget getSuggested(){
+Widget getSuggested() {
   return null;
 }
 
@@ -53,18 +60,24 @@ class SuggestedBar extends StatelessWidget {
             print('horizantal $index');
           },
           child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SuggestedLessonCard(170),
-                Padding(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SuggestedLessonCard(170),
+              Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     width: 170,
-                    child: Text(fakeList[index],style: TextStyle(color: Colors.white, ),textAlign: TextAlign.center, maxLines: 2,),
-                  )
-                ),
-              ],
+                    child: Text(
+                      fakeList[index],
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                    ),
+                  )),
+            ],
           ),
         );
       },
@@ -109,46 +122,62 @@ class _TrendsListState extends State<TrendsList> {
             print('vertical $index');
           },
           child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text('${index + 1}) ${data[index]}',style: TextStyle(color: Colors.white38),),
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              '${index + 1}) ${data[index]}',
+              style: TextStyle(color: ThemeColors.fontColorLight),
             ),
+          ),
         );
       },
     );
   }
 }
 
-Widget LessonCard(double size){
+Widget LessonCard(double size) {
   return Container(
-    color: Color.fromRGBO(196, 196, 196, 1),
+    color: ThemeColors.grey,
     width: size,
     height: size,
   );
 }
 
-Widget SuggestedLessonCard(double size){
+Widget SuggestedLessonCard(double size) {
   return Container(
     width: size,
     height: size,
     child: Stack(
-    children: [
-      LessonCard(size),
-      Align(
-        alignment: Alignment.topLeft,
-        child: Stack(
-          children: [
+      children: [
+        LessonCard(size),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Stack(
+            children: [
+              Text(
+                ' data ',
+                style: TextStyle(
+                    color: ThemeColors.fontColorLight,
+                    backgroundColor: ThemeColors.accent),
+              ),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Stack(
+            children: [
+              Text(
+                ' data ',
+                style: TextStyle(
+                    color: ThemeColors.fontColorLight,
+                    backgroundColor: ThemeColors.accent),
+              ),
+            ],
+          ),
+        ),
 
-            Text('data', style: TextStyle(color: Colors.green, backgroundColor: Colors.red ),),],
-        ),
-      ),
-      Align(
-        alignment: Alignment.bottomLeft,
-        child: Stack(
-          children: [Text('data', style: TextStyle(color: Colors.green, backgroundColor: Colors.red ),),],
-        ),
-      ),
-      ///Todo: Açıklamaları yaz.
-    ],
-  ),
+        ///Todo: Açıklamaları yaz.
+      ],
+    ),
   );
 }

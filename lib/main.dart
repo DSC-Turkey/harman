@@ -7,6 +7,7 @@ import 'screens/mainScreens/myLessonsScreen.dart';
 import 'screens/userManagement/loginScreen.dart';
 import 'service/auth.dart';
 import 'service/database.dart';
+import 'themes/themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,36 +56,35 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: ThemeColors.background,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.menu,color: Colors.white,),
-          color: Colors.white,
+          icon: Icon(Icons.menu,color: ThemeColors.grey,),
           onPressed: null,
         ), // Todo: sol menu açıcı
         actions: [
           Row(
             children: [
               IconButton(
-                icon: Icon(Icons.search,color: Colors.white,),
+                icon: Icon(Icons.search,color: ThemeColors.grey,),
                 color: Colors.white,
                 onPressed: null,
               ),
               IconButton(
-                icon: Icon(Icons.notifications,color: Colors.white),
+                icon: Icon(Icons.notifications,color: ThemeColors.grey),
                 onPressed: () {
                   AuthService.signOut();
                 },
               ),
               IconButton(
-                icon: Icon(Icons.person,color: Colors.white,),
+                icon: Icon(Icons.person,color: ThemeColors.grey,),
                 onPressed: () {},
               ),
             ],
           )
         ],
         title: Text('Harman'),
-        backgroundColor: Color.fromRGBO(38, 50, 56, 1),
+        backgroundColor: ThemeColors.accent,
       ),
       body: PageView(
         //BottomNavigationBar bağlantısı
@@ -97,7 +97,7 @@ class _NavigationPageState extends State<NavigationPage> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(38, 50, 56, 1),
+        backgroundColor: ThemeColors.accent,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -115,8 +115,8 @@ class _NavigationPageState extends State<NavigationPage> {
           ),
         ],
         currentIndex: pageNum,
-        unselectedItemColor: Colors.grey,
-        selectedItemColor: Colors.white,
+        unselectedItemColor: ThemeColors.grey,
+        selectedItemColor: ThemeColors.white,
         onTap: (index) {
           setState(() {
             pageNum = index;

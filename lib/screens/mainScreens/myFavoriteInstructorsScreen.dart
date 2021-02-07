@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:harman2021hackathon/themes/themes.dart';
 
 class MyFavouriteInstructorsPage extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _MyFavouriteInstructorsPageState extends State<MyFavouriteInstructorsPage>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(backgroundImage: NetworkImage(img),maxRadius: 40.0,),
-            Text(instructor,style: TextStyle(color: Colors.white),)
+            Text(instructor,style: TextStyle(color: ThemeColors.fontColorLight),)
           ],
         ),
       ),
