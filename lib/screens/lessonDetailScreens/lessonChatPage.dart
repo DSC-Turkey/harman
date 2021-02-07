@@ -14,13 +14,14 @@ class _lessonChatPageState extends State<LessonChatPage> {
       body: ChatService.getMessages(context, '1234'),
       bottomNavigationBar: BottomAppBar(
           child: Container(
+            color: Color.fromRGBO(144, 164, 174, 1),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(icon: Icon(Icons.tag_faces), onPressed: null),
+            IconButton(icon: Icon(Icons.tag_faces), color: Color.fromRGBO(38, 50, 56, 1), onPressed: null),
             Expanded(child: TextField()),
-            IconButton(icon: Icon(Icons.send), onPressed: null)
+            IconButton(icon: Icon(Icons.send, color: Color.fromRGBO(38, 50, 56, 1),), onPressed: null)
           ],
         ),
       )),
