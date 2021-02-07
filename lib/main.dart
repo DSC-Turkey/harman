@@ -6,7 +6,6 @@ import 'screens/mainScreens/myFavoriteInstructorsScreen.dart';
 import 'screens/mainScreens/myLessonsScreen.dart';
 import 'screens/userManagement/loginScreen.dart';
 import 'service/auth.dart';
-import 'service/chatTest.dart';
 import 'service/database.dart';
 
 void main() async {
@@ -79,10 +78,7 @@ class _NavigationPageState extends State<NavigationPage> {
               ),
               IconButton(
                 icon: Icon(Icons.person,color: Colors.white,),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ChatTest()));
-                },
+                onPressed: () {},
               ),
             ],
           )

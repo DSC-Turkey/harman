@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:harman2021hackathon/service/auth.dart';
+
 import '../models/messageModel.dart';
 
 class ChatService {
@@ -11,12 +11,16 @@ class ChatService {
   static Widget getMessages(context, groupChatId) {
     return StreamBuilder<QuerySnapshot>(
         stream:
-            chatCollection.doc(groupChatId).collection('messages').snapshots(),
+            chatCollection.doc(groupChatId).collection('messages').orderBy('timestamp',descending: true).limit(20).snapshots(),
         builder: (context, snapshot) {
           List<Message> messageList = [];
 
           if (!snapshot.hasData) {
-            return null;
+            return Center(
+              child: CircularProgressIndicator(
+
+              ),
+            );
           } else {
             snapshot.data.docs.forEach((element) {
               var newMessage = Message(
@@ -28,7 +32,7 @@ class ChatService {
               );
               messageList.add(newMessage);
             });
-            print(messageList[1].userId);
+
             return ListView.builder(
               itemCount: messageList.length,
               reverse: true,
