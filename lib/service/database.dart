@@ -6,7 +6,7 @@ class DatabaseService {
   static final fire = FirebaseFirestore.instance;
   static final CollectionReference userCollection = fire.collection('users');
 
-  void newUser({String userName, String email}) {
+  static void newUser({String userName, String email}) {
     var data = {
       'userId': null,
       'userName': userName,
@@ -16,11 +16,23 @@ class DatabaseService {
     userCollection.doc(userId).set(data);
   }
 
-  void initUser() {
-    var userId = AuthService.getUserId();
-    var userDoc = userCollection.doc(userId).snapshots().;
+  static void initUser() async {
+    var cUser = await AuthService.auth.currentUser;
 
-    user.id = userId;
-    user.userName = ;
+    var data = {
+      'userId': cUser.uid,
+    };
+    var userId = AuthService.getUserId();
+    await userCollection.doc(userId).update(data);
+  }
+
+  static void getUser() async {
+    var cUser = await AuthService.auth.currentUser;
+
+    var userDoc = await userCollection.doc(cUser.uid).get();
+    var data = userDoc.data();
+    user.id = data['userId'];
+    user.userName = data['userName'];
+    user.email = data['email'];
   }
 }

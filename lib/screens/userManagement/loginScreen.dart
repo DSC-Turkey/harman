@@ -5,6 +5,7 @@ import 'package:harman2021hackathon/screens/mainScreens/homeScreen.dart';
 import 'package:harman2021hackathon/screens/userManagement/resetPasswordScreen.dart';
 import 'package:harman2021hackathon/screens/userManagement/signUpScreen.dart';
 import 'package:harman2021hackathon/service/auth.dart';
+import 'package:harman2021hackathon/service/database.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -99,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child:
-              Text('Forgot password?', style: TextStyle(color: Colors.white)),
+              Text('Şifremi unuttum.', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context) => ResetPasswordPage()));
@@ -118,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                 key: Key('submitButtonKey'),
                 color: Colors.white,
                 onPressed: _onPressed,
-                child: Text('Submit'),
+                child: Text('Onayla'),
               ),
             ),
             SizedBox(
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 color: Color.fromRGBO(38, 50, 56, 1),
-                child: Text('Sign up', style: TextStyle(color: Colors.white)),
+                child: Text('Kaydol', style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignUpPage()));
@@ -142,7 +143,6 @@ class _LoginPageState extends State<LoginPage> {
     bool result = await AuthService.signInWithEmail(
         emailController.text, passwordController.text);
     if (result == true) {
-      user.email = emailController.text;
       await Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => NavigationPage()));
       isLoading = false;

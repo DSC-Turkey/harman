@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:harman2021hackathon/service/auth.dart';
+import 'package:harman2021hackathon/service/database.dart';
 import 'loginScreen.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -156,6 +157,11 @@ class _SignUpPageState extends State<SignUpPage> {
     var result = await AuthService.signUpWithEmail(
         emailController.text, passwordController.text);
     if(result == true){
+      DatabaseService.newUser(
+          userName: nameController.text,
+          email: emailController.text,
+      );
+
       await Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoginPage()));
       isLoading = false;

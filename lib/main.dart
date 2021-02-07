@@ -7,6 +7,7 @@ import 'screens/mainScreens/myLessonsScreen.dart';
 import 'screens/userManagement/loginScreen.dart';
 import 'service/auth.dart';
 import 'service/chatTest.dart';
+import 'service/database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +48,12 @@ class _NavigationPageState extends State<NavigationPage> {
   PageController pageController = PageController(initialPage: 0);
 
   @override
+  void initState() {
+    DatabaseService.initUser();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -66,7 +73,9 @@ class _NavigationPageState extends State<NavigationPage> {
               ),
               IconButton(
                 icon: Icon(Icons.notifications,color: Colors.white),
-                onPressed: null,
+                onPressed: () {
+                  AuthService.signOut();
+                },
               ),
               IconButton(
                 icon: Icon(Icons.person,color: Colors.white,),
