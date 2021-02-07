@@ -117,6 +117,10 @@ class AuthService {
       return null;
     }
   }
+
+  static String getUserId(){
+    return auth.currentUser.uid;
+  }
 }
 
 /// Alttan çıkan uyarı mesajı
